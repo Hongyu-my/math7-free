@@ -1,0 +1,703 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>浙教版 七年级数学 · 同步精讲+拓展拔高（单章视图）</title>
+<style>
+  :root{
+    --blue:#185FA5; --green:#3B6D11; --amber:#854F0B; --purple:#534AB7; --red:#A32D2D; --deep:#6a2da8;
+  }
+  *{box-sizing:border-box;}
+  body{font-family:"Microsoft YaHei","PingFang SC",sans-serif;color:#1f2937;background:#eef1f5;margin:0;line-height:1.75;font-size:15px;}
+  .wrap{display:flex;align-items:flex-start;max-width:1180px;margin:0 auto;}
+  .sidebar{width:240px;flex:0 0 240px;position:sticky;top:0;height:100vh;overflow-y:auto;background:#0c447c;color:#cfe0f3;padding:16px 12px;}
+  .sidebar .brand{font-size:14px;color:#fff;font-weight:700;margin:0 0 12px;padding-bottom:8px;border-bottom:1px solid #2a5e92;line-height:1.4;}
+  .navbtn{display:block;width:100%;text-align:left;background:none;border:none;color:#cfe0f3;font-size:13.5px;padding:7px 10px;border-radius:6px;margin:2px 0;cursor:pointer;font-family:inherit;}
+  .navbtn:hover{background:#185FA5;color:#fff;}
+  .navbtn.on{background:#fff;color:#0c447c;font-weight:700;}
+  .grp{font-size:11.5px;color:#8fb4d8;margin:14px 0 4px;letter-spacing:1px;}
+  .content{flex:1;background:#fff;padding:30px 42px;min-height:100vh;}
+  .chap-sec{display:none;}
+  .chap-sec.active{display:block;}
+  h1{font-size:24px;margin:0 0 6px;color:#0c447c;}
+  .lead{color:#6b7280;font-size:14px;margin:0 0 16px;}
+  h2.chap{font-size:21px;margin:0 0 8px;padding:10px 14px;background:#eef4fb;border-left:6px solid var(--blue);border-radius:8px;color:#0c447c;}
+  h3{font-size:16px;margin:20px 0 8px;color:#11263f;}
+  .frame{background:#f1f5fb;border-left:5px solid var(--blue);border-radius:8px;padding:12px 16px;margin:12px 0;}
+  .frame b{color:var(--blue);}
+  .teach{background:#f3faf3;border-left:5px solid var(--green);border-radius:8px;padding:14px 18px;margin:14px 0;}
+  .teach b{color:var(--green);}
+  .kou{display:inline-block;background:#eaf3de;color:#27500a;border:1px dashed #97c459;border-radius:6px;padding:2px 10px;font-size:13.5px;margin:4px 0;}
+  .solve{background:#fbfcfe;border:1px solid #e5e7eb;border-radius:8px;padding:12px 16px;margin:12px 0;}
+  .solve .q{color:#0c447c;font-weight:700;}
+  .solve .st{color:#374151;}
+  .solve .tip{color:var(--red);font-size:14px;}
+  .type{background:#fffaf0;border-left:5px solid var(--amber);border-radius:8px;padding:14px 18px;margin:14px 0;}
+  .type .t{color:var(--amber);font-weight:700;}
+  .pit{background:#fdf0f0;border-left:5px solid var(--red);border-radius:8px;padding:12px 16px;margin:12px 0;}
+  .pit b{color:var(--red);}
+  .pit li{margin:4px 0;}
+  /* 拓展拔高 */
+  .ext{background:linear-gradient(135deg,#f6f0ff,#fdf3ff);border-left:5px solid var(--deep);border-radius:8px;padding:14px 18px;margin:14px 0;}
+  .ext .t{color:var(--deep);font-weight:700;font-size:15px;}
+  .ext .et{color:#4a1d7a;font-weight:700;margin:10px 0 4px;}
+  .ext .ex{background:#fff;border:1px dashed #b794e0;border-radius:8px;padding:10px 14px;margin:8px 0;font-size:14px;}
+  .ext .ex b{color:var(--deep);}
+  .koubox{background:#fff8ec;border:1px solid #f3d99a;border-radius:8px;padding:10px 14px;margin:12px 0;font-size:14px;}
+  .koubox span{margin-right:14px;display:inline-block;}
+  .vid{background:#f0f7ff;border-left:5px solid var(--blue);border-radius:8px;padding:12px 16px;margin:14px 0;}
+  .vid b{color:var(--blue);}
+  .vid li{margin:4px 0;font-size:14px;}
+  .vid a{color:#185FA5;text-decoration:underline;font-weight:600;}
+  table{width:100%;border-collapse:collapse;margin:14px 0;font-size:14px;}
+  th,td{border:1px solid #e5e7eb;padding:8px 10px;text-align:left;vertical-align:top;}
+  th{background:#eef4fb;color:#0c447c;}
+  .note{background:#fff8ec;border:1px solid #f3d99a;border-radius:10px;padding:14px 18px;margin:14px 0;}
+  .footer{margin-top:36px;padding-top:14px;border-top:1px solid #e5e7eb;color:#9aa3af;font-size:13px;}
+  .map{display:flex;gap:18px;flex-wrap:wrap;margin:12px 0;}
+  .map .col{flex:1;min-width:240px;background:#f8fafc;border:1px solid #e5e7eb;border-radius:10px;padding:14px 18px;}
+  .map .col h4{margin:0 0 8px;color:var(--purple);font-size:15px;}
+  .map .col ol{margin:0;padding-left:20px;}
+  .inter{background:#f7f9ff;border:1px solid #c9d8ef;border-radius:12px;padding:16px 18px;margin:14px 0;}
+  .inter h4{margin:0 0 4px;color:#0c447c;font-size:15px;}
+  .inter .itip{color:#6b7280;font-size:13px;margin:0 0 10px;line-height:1.6;}
+  .inter .btns{display:flex;gap:8px;flex-wrap:wrap;margin:8px 0;}
+  .inter button.ib{background:#0c447c;color:#fff;border:none;border-radius:8px;padding:7px 14px;font-size:13.5px;cursor:pointer;font-family:inherit;}
+  .inter button.ib:hover{background:#185FA5;}
+  .inter .stage{margin-top:10px;}
+  .inter svg{width:100%;height:auto;display:block;background:#fff;border-radius:8px;border:1px solid #e5e7eb;}
+  .inter .res{margin-top:10px;font-size:14px;background:#eaf3de;border-left:4px solid #3B6D11;padding:8px 12px;border-radius:6px;min-height:20px;}
+  .inter .res b{color:#27500a;}
+  .inter .expr{font-size:18px;margin:6px 0;font-family:'Courier New',monospace;}
+  .inter .chg1{color:#A32D2D;font-weight:700;}
+  .inter .chg2{color:#3B6D11;font-weight:700;}
+  @media print{
+    body{background:#fff;}
+    .sidebar{display:none;}
+    .content{padding:0 10px;min-height:auto;}
+    .wrap{display:block;}
+    .chap-sec{display:block!important;page-break-before:always;}
+    .teach,.type,.pit,.frame,.solve,.note,.koubox,.vid,.ext,.inter{break-inside:avoid;}
+  }
+</style>
+</head>
+<body>
+<div class="wrap">
+
+  <nav class="sidebar">
+    <div class="brand">七年级数学 · 同步精讲+拓展<br><span style="font-weight:400;font-size:11.5px;color:#8fb4d8;">浙教版 ｜ 点章节→只看该章</span></div>
+    <button class="navbtn on" id="nav-home" onclick="show('home')">封面 / 总览</button>
+    <div class="grp">上册</div>
+    <button class="navbtn" id="nav-c1" onclick="show('c1')">第1章 有理数</button>
+    <button class="navbtn" id="nav-c2" onclick="show('c2')">第2章 有理数的运算</button>
+    <button class="navbtn" id="nav-c3" onclick="show('c3')">第3章 实数</button>
+    <button class="navbtn" id="nav-c4" onclick="show('c4')">第4章 代数式</button>
+    <button class="navbtn" id="nav-c5" onclick="show('c5')">第5章 一元一次方程</button>
+    <button class="navbtn" id="nav-c6" onclick="show('c6')">第6章 图形的初步认识</button>
+    <div class="grp">下册</div>
+    <button class="navbtn" id="nav-c7" onclick="show('c7')">第1章 相交线与平行线</button>
+    <button class="navbtn" id="nav-c8" onclick="show('c8')">第2章 二元一次方程组</button>
+    <button class="navbtn" id="nav-c9" onclick="show('c9')">第3章 整式的乘除</button>
+    <button class="navbtn" id="nav-c10" onclick="show('c10')">第4章 因式分解</button>
+    <button class="navbtn" id="nav-c11" onclick="show('c11')">第5章 分式</button>
+    <button class="navbtn" id="nav-c12" onclick="show('c12')">第6章 数据与统计图表</button>
+    <div class="grp">附录</div>
+    <button class="navbtn" id="nav-err" onclick="show('err')">附一 错题归因模板</button>
+    <button class="navbtn" id="nav-road" onclick="show('road')">附二 能力进阶路线图</button>
+  </nav>
+
+  <main class="content">
+
+    <section class="chap-sec active" id="sec-home">
+      <h1>浙教版 · 七年级数学 同步精讲 + 拓展拔高</h1>
+      <p class="lead">上册 6 章 ＋ 下册 6 章 ｜ 点左侧章节，只看该章 ｜ 每章：知识框架 → 老师精讲 → 典例 → 题型坑点 → <b style="color:#6a2da8">拓展拔高(补习班专题)</b> → 易错 → 口诀 → 视频链接</p>
+      <div class="map">
+        <div class="col"><h4>七年级上册（浙教版）</h4><ol>
+          <li>有理数</li><li>有理数的运算</li><li>实数</li>
+          <li>代数式</li><li>一元一次方程</li><li>图形的初步认识</li></ol></div>
+        <div class="col"><h4>七年级下册（浙教版）</h4><ol>
+          <li>相交线与平行线</li><li>二元一次方程组</li><li>整式的乘除</li>
+          <li>因式分解</li><li>分式</li><li>数据与统计图表</li></ol></div>
+      </div>
+      <div class="note"><b>这套资料怎么用：</b>基础部分（精讲+典例+坑点+口诀）跟校内同步，保证考试基础分；<b style="color:#6a2da8">紫色「拓展拔高」是补习班才会讲的加餐</b>——含参、分类讨论、几何模型、新定义等，专门应对"考的比课本深"的压轴题。先吃透基础，再啃拓展，别本末倒置。</div>
+      <div class="frame"><b>一句话拎主线：</b>浙教版七上把"数"从有理数扩到实数，再学代数式和一次方程，几何只讲最基础的线段与角；七下进入"式"的运算（整式乘除、因式分解、分式）和方程升级（二元一次），平行线是推理入门。计算与代数变形贯穿全年，务必先过关。</div>
+    </section>
+
+    <!-- 第1章 有理数 -->
+    <section class="chap-sec" id="sec-c1">
+      <h2 class="chap">第1章 有理数</h2>
+      <div class="frame"><b>知识框架：</b>正数负数 → 有理数分类 → 数轴 → 相反数／绝对值 → 有理数大小比较</div>
+      <div class="teach">
+        <p><b>① 负数一出场，数系变立体。</b>有理数 = 整数 + 分数。<b>0 既不是正数也不是负数</b>，是正数负数的分界。</p>
+        <p><b>② 数轴三要素：</b>原点、正方向、单位长度。数轴上<b>右边的数总比左边大</b>。</p>
+        <p><b>③ 绝对值 = 到原点距离，永远非负。</b><span class="kou">正数本身是它，负数是相反数，0 还是 0</span></p>
+        <p><b>④ 相反数：</b>只有符号不同的两个数，0 的相反数是 0。</p>
+      </div>
+      <div class="solve"><p class="q">典例1：a=−3，b=5，比较 a、b、|a−b| 的大小。</p>
+        <p class="st">解：a−b=−8，|a−b|=8。−3 &lt; 5 &lt; 8，即 a &lt; b &lt; |a−b|。<b>答案：a &lt; b &lt; |a−b|</b></p>
+        <p class="tip">点睛：先算绝对值再比大小；别把 |a−b| 直接当 a−b。</p></div>
+      <div class="solve"><p class="q">典例2：|x|=3，求 x。</p>
+        <p class="st">解：到原点距离 3 的点有两个：3 和 −3。<b>答案：x=±3</b></p>
+        <p class="tip">点睛：绝对值方程常两解，别漏负的。</p></div>
+      <div class="type"><p class="t">题型·坑点</p>
+        <p>题型A 绝对值化简：先判内部符号。<b>坑：</b>不分正负直接去绝对值。</p>
+        <p>题型B 数轴比大小：右大左小。<b>坑：</b>负数比大小搞反（−5 &lt; −2）。</p></div>
+      <div class="ext"><span class="t">拓展拔高（补习班专题）</span>
+        <div class="et">专题1 数轴动点问题</div>
+        <div class="ex"><b>例：</b>数轴上 A 在 −2，B 在 4。点 P 从 A 以 1 单位/秒向右，点 Q 从 B 以 2 单位/秒向左，几秒后相遇？相遇点表示几？<br><b>解：</b>设 t 秒，P=−2+t，Q=4−2t。相遇 −2+t=4−2t ⇒ 3t=6 ⇒ t=2，位置=0。<b>答案：2秒后在点 0 相遇。</b><br><b>套路：</b>动点位置 = 起点 ± 速度×时间（右加左减）；相遇令相等，中点用 (左+右)/2。</div>
+        <div class="et">专题2 绝对值的几何意义（|x−a| 的套路）</div>
+        <div class="ex"><b>例：</b>求 |x−1|+|x−3| 的最小值及 x 范围。<br><b>解：</b>|x−1| 是 x 到 1 的距离，|x−3| 是 x 到 3 的距离。当 x 在 1 和 3 之间时，两距离之和恰为 1 到 3 的距离=2，最小。<b>答案：最小值 2，1≤x≤3。</b><br><b>口诀：</b>两点间线段最短，x 落中间取最小。</div>
+        <div class="et">专题3 新定义运算（考试常客）</div>
+        <div class="ex"><b>例：</b>规定 a⊕b = a²−b，求 (−2)⊕3。<br><b>解：</b>代入公式得 (−2)²−3=4−3=1。<b>答案：1。</b><br><b>招：</b>把新符号当成"套公式"，老老实实代入，别自己发明规则。</div>
+      </div>
+      <div class="pit"><b>易错：</b><ul><li>认为"带负号的数都是负数"（−(−3)是正数）；</li><li>绝对值化简不判内部正负；</li><li>负数比大小方向反；</li><li>|x|=a 漏掉负解 x=−a。</li></ul></div>
+      <div class="koubox"><b>口诀：</b><span>0非正非负</span><span>绝对值非负</span><span>右大左小</span><span>|x−a|表距离</span></div>
+      <div class="inter">
+        <h4>🎬 动图演示：绝对值 = 到原点的距离</h4>
+        <p class="itip">点"−1 / +1"移动点 A，看 |a| 怎么变。负数也变正距离——距离永远非负。</p>
+        <div class="btns">
+          <button class="ib" onclick="absMove(curA-1)">A 左移 −1</button>
+          <button class="ib" onclick="absMove(curA+1)">A 右移 +1</button>
+          <button class="ib" onclick="absMove(-3)">重置到 −3</button>
+        </div>
+        <div class="stage" id="abs-stage"></div>
+        <div class="res" id="abs-res"></div>
+      </div>
+      <div class="vid"><b>视频链接（点开即跳转到搜索）：</b>
+        <ul>
+          <li><a href="https://www.bilibili.com/video/BV1UY411879H/?p=2" target="_blank">B站系统课·浙教版七上 第1章 有理数（合集 P1–P6 正数负数/有理数/数轴/相反数/绝对值/比较，点开自动连播整章）</a></li>
+          <li><a href="https://basic.smartedu.cn/" target="_blank">国家中小学智慧教育平台（站内搜"七年级 数学 有理数"）</a></li>
+        </ul></div>
+    </section>
+
+    <!-- 第2章 有理数的运算 -->
+    <section class="chap-sec" id="sec-c2">
+      <h2 class="chap">第2章 有理数的运算</h2>
+      <div class="frame"><b>知识框架：</b>加减 → 乘除 → 乘方 → 混合运算 → 近似数／科学记数法</div>
+      <div class="teach">
+        <p><b>① 加减——符号是命门。</b>同号相加取同号；异号相减<b>大减小，符号跟着大的数跑</b>。</p>
+        <p><b>② 乘除：</b>同号得正，异号得负，绝对值相乘除。<b>0 不能做除数。</b></p>
+        <p><b>③ 乘方最容易被括号坑。</b>(−2)²=4，−2²=−4。<span class="kou">负号在括号里才参与平方</span></p>
+        <p><b>④ 混合运算顺序：</b>先乘方，再乘除，最后加减；有括号先算括号。</p>
+      </div>
+      <div class="solve"><p class="q">典例：计算 −3² + (−2)³ ÷ (−4) − |−5|。</p>
+        <p class="st">解：−9 + (−8)÷(−4) − 5 = −9 + 2 − 5 = −12。<b>答案：−12</b></p>
+        <p class="tip">点睛：−3²=−9 不是 9；先乘方后乘除最后加减。</p></div>
+      <div class="type"><p class="t">题型·坑点</p>
+        <p>题型A 乘方符号：指数奇偶决定。<b>坑：</b>(−2)² 与 −2² 混淆。</p>
+        <p>题型B 混合运算：严格顺序。<b>坑：</b>运算顺序错、科学记数法格式错（1≤|a|&lt;10）。</p></div>
+      <div class="ext"><span class="t">拓展拔高（补习班专题）</span>
+        <div class="et">专题1 乘方的符号规律与"奇负偶正"</div>
+        <div class="ex"><b>例：</b>(−1)ⁿ 当 n 为奇数、偶数时各是多少？<br><b>解：</b>底数是 −1，奇次幂=−1，偶次幂=1。<b>答案：奇 −1，偶 1。</b><br><b>延伸：</b>−1 的奇偶次幂是压轴小题常客，记牢"奇负偶正"。</div>
+        <div class="et">专题2 巧算与规律探究（裂项、凑整）</div>
+        <div class="ex"><b>例：</b>计算 1−2+3−4+…+99−100。<br><b>解：</b>两两分组：(1−2)+(3−4)+…+(99−100)= (−1)×50 = −50。<b>答案：−50。</b><br><b>套路：</b>符号交替、项数成对时先分组；裂项形如 1/(n(n+1))=1/n−1/(n+1)。</div>
+        <div class="et">专题3 程序框图 / 数字规律</div>
+        <div class="ex"><b>例：</b>按"输出 = 输入²−1，再取相反数"的规则，输入 −3 输出多少？<br><b>解：</b>(−3)²−1=8，取相反数=−8。<b>答案：−8。</b><br><b>招：</b>框图题一步步代，注意"先算后取反"的顺序。</div>
+      </div>
+      <div class="pit"><b>易错：</b><ul><li>认为带负号的乘方都负；(−2)²与−2²混淆；</li><li>运算顺序错：先算加减后乘方；</li><li>0 做除数；</li><li>科学记数法 a 不在 1~10 之间。</li></ul></div>
+      <div class="koubox"><b>口诀：</b><span>异号相减大减小带大号</span><span>同号得正异号得负</span><span>负号进括号才平方</span><span>先乘方再乘除后加减</span></div>
+      <div class="inter">
+        <h4>🎬 动图演示：乘方，负号在不在括号里差很多</h4>
+        <p class="itip">点"换底数"看 (−a)² 和 −a² 的区别：只差一个负号，结果天差地别。</p>
+        <div class="btns">
+          <button class="ib" onclick="powSwap()">换底数（2 ↔ 3）</button>
+          <button class="ib" onclick="powShow()">重新演示</button>
+        </div>
+        <div class="stage" id="pow-stage"></div>
+        <div class="res" id="pow-res"></div>
+      </div>
+      <div class="vid"><b>视频链接（点开即跳转）：</b>
+        <ul>
+          <li><a href="https://www.bilibili.com/video/BV1UY411879H/?p=7" target="_blank">B站系统课·浙教版七上 第2章 有理数运算（合集 P7–P14 加减乘除/乘方/混合运算/科学记数法，点开自动连播整章）</a></li>
+          <li><a href="https://basic.smartedu.cn/" target="_blank">国家中小学智慧教育平台（站内搜"有理数混合运算"）</a></li>
+        </ul></div>
+    </section>
+
+    <!-- 第3章 实数 -->
+    <section class="chap-sec" id="sec-c3">
+      <h2 class="chap">第3章 实数</h2>
+      <div class="frame"><b>知识框架：</b>平方根 → 算术平方根 → 立方根 → 无理数／实数 → 实数的运算</div>
+      <div class="teach">
+        <p><b>① 平方根 vs 算术平方根。</b>正数 a 的<b>平方根</b>有两个 ±√a；<b>算术平方根</b>只取正的 √a。0 的平方根是 0。</p>
+        <p><b>② 立方根：</b>³√a 只有一个，负数的立方根是负数。³√(−8)=−2。</p>
+        <p><b>③ 无理数：</b>无限不循环小数（π、√2 等非完全平方的根）。实数 = 有理数 + 无理数。</p>
+        <p><b>④ 重要区别：</b>√a² = |a|；而 (√a)² = a（要求 a≥0）。</p>
+      </div>
+      <div class="solve"><p class="q">典例1：求 16 的平方根和算术平方根。</p>
+        <p class="st">解：平方根 ±4，算术平方根 4。<b>答案：±4；4</b></p>
+        <p class="tip">点睛：问"平方根"要写两个，"算术平方根"只写一个。</p></div>
+      <div class="solve"><p class="q">典例2：√25 的值？³√(−27) 的值？</p>
+        <p class="st">解：√25=5；³√(−27)=−3。<b>答案：5；−3</b></p>
+        <p class="tip">点睛：√25 不是 ±5，算术平方根只取正。</p></div>
+      <div class="type"><p class="t">题型·坑点</p>
+        <p>题型A 开方：分清平方根/算术平方根。<b>坑：</b>√16 写成 ±4。</p>
+        <p>题型B √a² 化简：= |a|。<b>坑：</b>直接写成 a（忽略 a 负）。</p></div>
+      <div class="ext"><span class="t">拓展拔高（补习班专题）</span>
+        <div class="et">专题1 根号估算与"整数部分+小数部分"</div>
+        <div class="ex"><b>例：</b>√10 在哪两个相邻整数间？若 √10 = a+b，a 为整数部分、b 为小数部分，求 a、b。<br><b>解：</b>9&lt;10&lt;16 ⇒ 3&lt;√10&lt;4，故整数部分 a=3，小数部分 b=√10−3。<b>答案：a=3，b=√10−3。</b><br><b>套路：</b>找平方夹逼；小数部分=原数−整数部分（必为正）。</div>
+        <div class="et">专题2 √a²=|a| 与 (√a)² 的辨析</div>
+        <div class="ex"><b>例：</b>当 x&lt;0 时，化简 √(x²)。<br><b>解：</b>√(x²)=|x|，因 x&lt;0，=|x|=−x。<b>答案：−x。</b><br><b>提醒：</b>结果要带正确符号，−x 此时是正数。</div>
+        <div class="et">专题3 实数运算中的化简</div>
+        <div class="ex"><b>例：</b>计算 |√3−2| + (√3−1)。<br><b>解：</b>√3≈1.732&lt;2，故 |√3−2|=2−√3。原式=2−√3+√3−1=1。<b>答案：1。</b></div>
+      </div>
+      <div class="pit"><b>易错：</b><ul><li>√a 默认指算术平方根，写成 ±√a；</li><li>√a² 直接等于 a（应 |a|）；</li><li>误以为带根号的都是无理数（√4=2 是有理数）；</li><li>立方根符号搞错。</li></ul></div>
+      <div class="koubox"><b>口诀：</b><span>平方根两算术平方根一</span><span>√a²=|a|</span><span>立方根符号随原数</span><span>根号估算用夹逼</span></div>
+      <div class="vid"><b>视频链接（点开即跳转）：</b>
+        <ul>
+          <li><a href="https://www.bilibili.com/video/BV1UY411879H/?p=15" target="_blank">B站系统课·浙教版七上 第3章 实数（合集 P15–P16 平方根/立方根与实数，点开自动连播整章）</a></li>
+          <li><a href="https://basic.smartedu.cn/" target="_blank">国家中小学智慧教育平台（站内搜"实数 平方根"）</a></li>
+        </ul></div>
+    </section>
+
+    <!-- 第4章 代数式 -->
+    <section class="chap-sec" id="sec-c4">
+      <h2 class="chap">第4章 代数式</h2>
+      <div class="frame"><b>知识框架：</b>用字母表示数 → 列代数式 → 代数式的值 → 整式（单项式／多项式）→ 合并同类项 → 去括号 → 整式加减</div>
+      <div class="teach">
+        <p><b>① 代数式 = 数和字母用运算符号连起来。</b>单独一个数或字母也是代数式，<b>不写"="和"&gt;"</b>。</p>
+        <p><b>② 单项式看两个"数"。</b><b>系数</b>=数字因数（含π）；<b>次数</b>=字母指数和。多项式次数看最高次项。</p>
+        <p><b>③ 合并同类项——只有 twins 才合。</b><span class="kou">同类才合并，系数加减字母指数留</span></p>
+        <p><b>④ 去括号，符号看"门脸"。</b><span class="kou">前是"+"不变，前是"−"全变号</span>，且前系数要乘进每项。</p>
+      </div>
+      <div class="solve"><p class="q">典例1：化简 3x − 2(x − 4y) + 5y。</p>
+        <p class="st">解：−2 乘进：−2x+8y。得 3x−2x+8y+5y = x+13y。<b>答案：x+13y</b></p>
+        <p class="tip">点睛：−2×(−4y) 算成 −8y（应为 +8y）是典型错。</p></div>
+      <div class="solve"><p class="q">典例2：a=−2，b=3，求 2a²b − 3ab + a²b。</p>
+        <p class="st">解：合并=3a²b−3ab。代入：3×4×3 − 3×(−2)×3 = 36+18 = 54。<b>答案：54</b></p>
+        <p class="tip">点睛：代入负数加括号；(−2)²=4。</p></div>
+      <div class="type"><p class="t">题型·坑点</p>
+        <p>题型A 化简求值：先合并再代入。<b>坑：</b>系数含π当字母；常数项也是同类项。</p>
+        <p>题型B 去括号：乘进每项、负号全变。<b>坑：</b>漏乘、漏变号。</p></div>
+      <div class="ext"><span class="t">拓展拔高（补习班专题）</span>
+        <div class="et">专题1 整体代入（已知局部求整体）</div>
+        <div class="ex"><b>例：</b>已知 x+y=5，xy=2，求 2x+2y−3xy。<br><b>解：</b>2x+2y−3xy = 2(x+y) − 3xy = 2×5 − 3×2 = 10−6 = 4。<b>答案：4。</b><br><b>套路：</b>别傻求和 x、y，把 (x+y)、(xy) 当整体直接代。</div>
+        <div class="et">专题2 赋值法 / 特殊值判断恒等式</div>
+        <div class="ex"><b>例：</b>判断 "2(a+b)=2a+b" 是否成立。<br><b>解：</b>取 a=1,b=1：左=4，右=3，不等 ⇒ 错误。<b>答案：不成立。</b><br><b>招：</b>恒等式证伪只需一个反例；构造题也常用赋特殊值。</div>
+        <div class="et">专题3 代数式表示规律（找第 n 项）</div>
+        <div class="ex"><b>例：</b>数列 3,5,7,9,… 第 n 项？<br><b>解：</b>是首项 3、公差 2 的等差，第 n 项=3+2(n−1)=2n+1。<b>答案：2n+1。</b></div>
+      </div>
+      <div class="pit"><b>易错：</b><ul><li>把π当字母算进次数；</li><li>常数项忘记合并；</li><li>去括号漏乘、漏变号；</li><li>"系数1或−1"计算丢项。</li></ul></div>
+      <div class="koubox"><b>口诀：</b><span>同类项字母指数同</span><span>系数加减字母留</span><span>前负去括号全变号</span><span>整体代入省力气</span></div>
+      <div class="inter">
+        <h4>🎬 动图演示：去括号，符号看"门脸"</h4>
+        <p class="itip">门前是"−"全变号，门前是"+"不变。点"去括号"分步看，红=变负，绿=变正。</p>
+        <div class="btns">
+          <button class="ib" onclick="ubSet('neg')">例1：负号门</button>
+          <button class="ib" onclick="ubSet('pos')">例2：正号门</button>
+          <button class="ib" onclick="ubNext()">去括号 ▶</button>
+        </div>
+        <div class="expr" id="ub-expr"></div>
+        <div class="res" id="ub-res"></div>
+      </div>
+      <div class="vid"><b>视频链接（点开即跳转）：</b>
+        <ul>
+          <li><a href="https://www.bilibili.com/video/BV1UY411879H/?p=17" target="_blank">B站系统课·浙教版七上 第4章 代数式（合集 P17–P21 代数式/整式/同类项/去括号/整式加减，点开自动连播整章）</a></li>
+          <li><a href="https://basic.smartedu.cn/" target="_blank">国家中小学智慧教育平台（站内搜"整式加减"）</a></li>
+        </ul></div>
+    </section>
+
+    <!-- 第5章 一元一次方程 -->
+    <section class="chap-sec" id="sec-c5">
+      <h2 class="chap">第5章 一元一次方程</h2>
+      <div class="frame"><b>知识框架：</b>方程与等式 → 等式基本性质 → 一元一次方程 → 解法（去分母／去括号／移项／合并／系数化1）→ 实际应用</div>
+      <div class="teach">
+        <p><b>① 方程思想：把"未知"当"已知"用。</b>设 x，找<b>等量关系</b>列等式再解。这是七年级最重要思维升级。</p>
+        <p><b>② 解方程五步法：</b><span class="kou">去分母→去括号→移项→合并→系数化1</span>。<b>移项必变号</b>。</p>
+        <p><b>③ 应用题钥匙=等量关系。</b>和差倍分、行程（路=速×时）、工程（量=效×时）、利润（利=售−本）。画线段图、列表。</p>
+      </div>
+      <div class="solve"><p class="q">典例1：解 (x+1)/2 − 1 = (2−x)/3。</p>
+        <p class="st">解：①×6：3(x+1)−6=2(2−x)；②去括号：3x+3−6=4−2x；③移项：5x=7；④x=7/5。<b>答案：x=7/5</b></p>
+        <p class="tip">点睛：去分母时 −1 也要×6；移项变号。</p></div>
+      <div class="solve"><p class="q">典例2：甲乙距240km，甲60、乙40相向而行，几小时相遇？</p>
+        <p class="st">解：60t+40t=240 ⇒ 100t=240 ⇒ t=2.4。<b>答案：2.4小时</b></p>
+        <p class="tip">点睛：相向用"加"，追及用"减"。</p></div>
+      <div class="type"><p class="t">题型·坑点</p>
+        <p>题型A 解方程：五步顺序不乱。<b>坑：</b>去分母漏乘无分母项；移项不变号。</p>
+        <p>题型B 应用：找等量关系。<b>坑：</b>"多20"列成"减20"；相向/追及搞反。</p></div>
+      <div class="ext"><span class="t">拓展拔高（补习班专题）</span>
+        <div class="et">专题1 含参数方程（解的讨论）</div>
+        <div class="ex"><b>例：</b>关于 x 的方程 2x+a=5 的解是正整数，求 a。<br><b>解：</b>x=(5−a)/2 为正整数 ⇒ 5−a 为正偶数 ⇒ 5−a=2、4、… ⇒ a=3、1、…（取合理值）。<b>答案：a=3 或 1（等）。</b><br><b>套路：</b>先用 a 表示解，再按"整数解/正整数解"反推参数范围。</div>
+        <div class="et">专题2 绝对值方程 |ax+b|=c</div>
+        <div class="ex"><b>例：</b>解 |2x−1|=3。<br><b>解：</b>2x−1=3 或 2x−1=−3 ⇒ x=2 或 x=−1。<b>答案：x=2 或 −1。</b><br><b>招：</b>绝对值方程先"去绝对值"化成两个一次方程。</div>
+        <div class="et">专题3 应用题进阶（分段计费 / 方案选择）</div>
+        <div class="ex"><b>例：</b>打车起步价 10 元(3km内)，超出每 km 2 元。乘车 8km 花多少？<br><b>解：</b>10 + 2×(8−3)=10+10=20。<b>答案：20元。</b><br><b>延伸：</b>分段计费先判断落在哪一段；方案选择要列两式比大小。</div>
+      </div>
+      <div class="pit"><b>易错：</b><ul><li>去分母漏乘不含分母项；</li><li>移项不变号；</li><li>去括号负号错；</li><li>应用题等量关系错；</li><li>绝对值方程漏一解。</li></ul></div>
+      <div class="koubox"><b>口诀：</b><span>移要变号</span><span>分母先乘每项</span><span>应用先找等量关系</span><span>绝对值方程两分支</span></div>
+      <div class="vid"><b>视频链接（点开即跳转）：</b>
+        <ul>
+          <li><a href="https://www.bilibili.com/video/BV1UY411879H/?p=22" target="_blank">B站系统课·浙教版七上 第5章 一元一次方程（合集 P22–P27 方程/解法/应用，点开自动连播整章）</a></li>
+          <li><a href="https://basic.smartedu.cn/" target="_blank">国家中小学智慧教育平台（站内搜"一元一次方程"）</a></li>
+        </ul></div>
+    </section>
+
+    <!-- 第6章 图形的初步认识 -->
+    <section class="chap-sec" id="sec-c6">
+      <h2 class="chap">第6章 图形的初步认识</h2>
+      <div class="frame"><b>知识框架：</b>几何图形 → 线段／射线／直线 → 线段长短比较与和差 → 角（度量／比较／和差）→ 余角和补角</div>
+      <div class="teach">
+        <p><b>① 线有三兄弟。</b>线段（两端点）、射线（一端点）、直线（无端点）。<b>两点之间线段最短；两点定一直线。</b></p>
+        <p><b>② 中点、角平分线——"一半"关系写准。</b>M是AB中点 ⇒ AM=MB=½AB。</p>
+        <p><b>③ 角度是 60 进制！</b><span class="kou">度分秒六十跳，借一当六十</span></p>
+        <p><b>④ 互余互补。</b>和90°互余，180°互补。同角/等角的余角相等、补角相等。</p>
+      </div>
+      <div class="solve"><p class="q">典例1：∠AOB=70°，OC平分，求∠AOC。</p>
+        <p class="st">解：∠AOC=½∠AOB=35°。<b>答案：35°</b></p>
+        <p class="tip">点睛：写成2×70°或忘"平分=一半"都错。</p></div>
+      <div class="solve"><p class="q">典例2：38.5°=?°?′；25°36′=?°。</p>
+        <p class="st">解：0.5°=30′⇒38°30′；36′=0.6°⇒25.6°。<b>答案：38°30′；25.6°</b></p>
+        <p class="tip">点睛：按十进制换算（38°50′）是大忌。</p></div>
+      <div class="type"><p class="t">题型·坑点</p>
+        <p>题型A 线段/角计算：用中点、角平分线。<b>坑：</b>2倍与½搞反。</p>
+        <p>题型B 度分秒换算：60进制。<b>坑：</b>当十进制。</p></div>
+      <div class="ext"><span class="t">拓展拔高（补习班专题）</span>
+        <div class="et">专题1 线段计算与分类讨论（动点/不确定位置）</div>
+        <div class="ex"><b>例：</b>AB=10，C在AB上且 AC=3，M、N 分别是 AC、BC 中点，求 MN。<br><b>解：</b>MN=½AC+½BC=½(AB)=5（与C位置无关！）。<b>答案：5。</b><br><b>套路：</b>中点连线段=½总长，这类"与动点位置无关"的结论常考。</div>
+        <div class="et">专题2 角度综合（角平分线+和差+折叠）</div>
+        <div class="ex"><b>例：</b>∠AOB=80°，OC 平分，∠BOD=30°，求 ∠COD。<br><b>解：</b>∠AOC=∠COB=40°；若 D 在 OB 外侧，∠COD=∠COB+∠BOD=70°（需看图定内外）。<b>答案：依图 70° 或分类。</b><br><b>提醒：</b>没给图时角的问题常要分类讨论。</div>
+        <div class="et">专题3 钟面角</div>
+        <div class="ex"><b>例：</b>3点整时针分针夹角？<br><b>解：</b>每小时30°，3点=3×30°=90°。<b>答案：90°。</b><br><b>公式：</b>夹角=|30H−5.5M|（H时M分）。</div>
+      </div>
+      <div class="pit"><b>易错：</b><ul><li>度分秒按十进制；</li><li>中点/角平分线关系写反；</li><li>"延长线""反向延长"方向错；</li><li>互余(90)与互补(180)混；</li><li>无图题不分类讨论。</li></ul></div>
+      <div class="koubox"><b>口诀：</b><span>两点之间线段短</span><span>度分秒六十跳</span><span>平分就是一半</span><span>无图题先分类</span></div>
+      <div class="vid"><b>视频链接（点开即跳转）：</b>
+        <ul>
+          <li><a href="https://www.bilibili.com/video/BV1UY411879H/?p=28" target="_blank">B站系统课·浙教版七上 第6章 图形初步（合集 P28–P33 几何体/线段/角，点开自动连播整章）</a></li>
+          <li><a href="https://basic.smartedu.cn/" target="_blank">国家中小学智慧教育平台（站内搜"几何图形 线段 角"）</a></li>
+        </ul></div>
+    </section>
+
+    <!-- 七下第1章 相交线与平行线 -->
+    <section class="chap-sec" id="sec-c7">
+      <h2 class="chap">七下第1章 相交线与平行线</h2>
+      <div class="frame"><b>知识框架：</b>两直线相交（对顶角/邻补角）→ 同位角/内错角/同旁内角 → 平行线判定 → 平行线性质 → 平移</div>
+      <div class="teach">
+        <p><b>① 对顶角相等，邻补角互补。</b></p>
+        <p><b>② 判定与性质，方向相反！</b><span class="kou">判定：由角推平行（角→线）；性质：由平行推角（线→角）</span>。</p>
+        <p><b>③ 拐弯模型。</b>平行线间折线，过拐点作平行线，把角"搬"到两侧再相加/相减。</p>
+        <p><b>④ 平移：</b>图形整体移动，形状大小不变，对应点连线平行且相等。</p>
+      </div>
+      <div class="solve"><p class="q">典例：AB∥CD，∠B=40°，∠D=30°，求∠BED。</p>
+        <p class="st">解：过E作EF∥AB，则EF∥CD。∠BEF=∠B=40°，∠DEF=∠D=30°，∠BED=70°。<b>答案：70°</b></p>
+        <p class="tip">点睛：猪蹄模型两角相加；骨折模型两角相减。</p></div>
+      <div class="type"><p class="t">题型·坑点</p>
+        <p>题型 证明平行/求角：先判定得平行，再用性质求角。<b>坑：</b>把性质当判定；拐弯模型不会加辅助线。</p></div>
+      <div class="ext"><span class="t">拓展拔高（补习班专题）</span>
+        <div class="et">专题1 五大拐弯模型（猪蹄/铅笔头/骨折/飞镖/8字）</div>
+        <div class="ex"><b>猪蹄（M形，角在平行线同侧）：</b>∠B+∠D=∠BED（两角相加）。<br><b>铅笔头/子弹头：</b>∠B−∠D=∠BED 或反之（两角相减）。<br><b>飞镖：</b>凹进去时 ∠B+∠D=∠BED+180° 类关系（视具体图形）。<br><b>8字模型：</b>两线相交，∠A+∠B=∠C+∠D。<br><b>招：</b>万变不离"过拐点作平行线"，把分散的角搬到一条线上。</div>
+        <div class="et">专题2 平行线中的角关系综合（多折线）</div>
+        <div class="ex"><b>例：</b>AB∥CD，折线 B−E−F−D，∠B=30°，∠D=40°，求 ∠E+∠F。<br><b>解：</b>过 E、F 各作平行线，把两拐点角分别拆给两侧，得 ∠B+∠D=∠E+∠F=70°。<b>答案：70°。</b></div>
+        <div class="et">专题3 平移与坐标（接八上坐标系预热）</div>
+        <div class="ex"><b>例：</b>线段 AB 向右平移 3 单位，A(1,2)→？<br><b>解：</b>右移 x+3，A'=(4,2)。<b>答案：(4,2)。</b></div>
+      </div>
+      <div class="pit"><b>易错：</b><ul><li>判定与性质张冠李戴；</li><li>同位角/内错角/同旁内角识别错；</li><li>拐弯模型辅助线不会加；</li><li>平移方向/距离搞错。</li></ul></div>
+      <div class="koubox"><b>口诀：</b><span>对顶相等邻补180</span><span>判定角推线</span><span>性质线推角</span><span>拐弯作平行线</span></div>
+      <div class="inter">
+        <h4>🎬 动图演示：平行线拐弯模型（猪蹄）</h4>
+        <p class="itip">AB∥CD，∠B=40°，∠D=30°，求 ∠BED。过拐点作平行线，把角"搬"到两侧再相加。</p>
+        <div class="btns">
+          <button class="ib" onclick="bendShow(false)">隐藏辅助线</button>
+          <button class="ib" onclick="bendShow(true)">显示辅助线 ▶</button>
+        </div>
+        <div class="stage" id="bend-stage"></div>
+        <div class="res" id="bend-res"></div>
+      </div>
+      <div class="vid"><b>视频链接（点开即跳转）：</b>
+        <ul>
+          <li><a href="https://www.bilibili.com/video/BV1UY411879H/?p=34" target="_blank">B站系统课·浙教版七下 相交线与平行线（合集 P34–P40 相交线/垂线/平行线判定性质/平移/拐点，点开自动连播整章）</a></li>
+          <li><a href="https://basic.smartedu.cn/" target="_blank">国家中小学智慧教育平台（站内搜"平行线 判定与性质"）</a></li>
+        </ul></div>
+    </section>
+
+    <!-- 七下第2章 二元一次方程组 -->
+    <section class="chap-sec" id="sec-c8">
+      <h2 class="chap">七下第2章 二元一次方程组</h2>
+      <div class="frame"><b>知识框架：</b>二元一次方程 → 方程组 → 解法（代入消元／加减消元）→ 实际应用 → 三元一次方程组(选学)</div>
+      <div class="teach">
+        <p><b>① 消元是核心思想。</b>把"二元"变"一元"。代入法（用一个表示另一个）、加减法（系数相反/相等时相加减）。</p>
+        <p><b>② 应用题：</b>设两个未知数，找两个等量关系列两个方程。</p>
+        <p><b>③ 检验：</b>解出的 x、y 要代回原方程组成立，且符合实际意义（如人数为正整数）。</p>
+      </div>
+      <div class="solve"><p class="q">典例：解 {x+y=5, x−y=1}。</p>
+        <p class="st">解：两式相加 2x=6 ⇒ x=3；代入 y=2。<b>答案：x=3,y=2</b></p>
+        <p class="tip">点睛：系数相反/相等优先加减法，快。</p></div>
+      <div class="solve"><p class="q">典例2：鸡兔同笼，头35脚94，鸡兔各几？</p>
+        <p class="st">解：设鸡x兔y，{x+y=35, 2x+4y=94} ⇒ 解得 x=23,y=12。<b>答案：鸡23兔12</b></p>
+        <p class="tip">点睛：脚数方程用 2x+4y，别写成 x+y。</p></div>
+      <div class="type"><p class="t">题型·坑点</p>
+        <p>题型A 解法选择：系数简单代入，相反相等加减。<b>坑：</b>消元时符号错。</p>
+        <p>题型B 应用：两等量关系。<b>坑：</b>只列一个方程；单位不统一。</p></div>
+      <div class="ext"><span class="t">拓展拔高（补习班专题）</span>
+        <div class="et">专题1 含参方程组（解的关系/同解问题）</div>
+        <div class="ex"><b>例：</b>方程组解满足 x=y，求参数。或"同解"：两个方程组有相同解，先解已知的一组再代未知组。<br><b>套路：</b>含参先当常数解，再用条件列关于参数的方程。</div>
+        <div class="et">专题2 应用题进阶（配套/数字/年龄/方案）</div>
+        <div class="ex"><b>例：</b>一张方桌配4把椅，x人做桌y人做椅，恰好配套，已知每人日产桌1张或椅4把，共20人，怎么分？<br><b>解：</b>{x+y=20, 4×1x = 4y?} 实际 桌数:椅数=1:4 ⇒ x : 4y =1:4 ⇒ x=y，结合 x+y=20 ⇒ x=10,y=10。<b>答案：各10人。</b><br><b>招：</b>配套题先写"产品数量比=配套比"。</div>
+        <div class="et">专题3 不定方程整数解（竞赛/压轴）</div>
+        <div class="ex"><b>例：</b>3x+2y=12 的正整数解？<br><b>解：</b>y=(12−3x)/2，x=2⇒y=3；x=4⇒y=0(非正)；x=1,3 非整。故 (2,3)。<b>答案：(2,3)。</b></div>
+      </div>
+      <div class="pit"><b>易错：</b><ul><li>加减消元符号错；</li><li>代入时括号忘加导致漏乘；</li><li>应用题只设一个元或只列一式；</li><li>解不符合实际（负人数）。</li></ul></div>
+      <div class="koubox"><b>口诀：</b><span>二元化一元</span><span>相反相等用加减</span><span>应用两等量两未知</span><span>解要检验合实际</span></div>
+      <div class="vid"><b>视频链接（点开即跳转）：</b>
+        <ul>
+          <li><a href="https://www.bilibili.com/video/BV1UY411879H/?p=41" target="_blank">B站系统课·浙教版七下 二元一次方程组（合集 P41–P46 概念/解法/应用/三元，点开自动连播整章）</a></li>
+          <li><a href="https://basic.smartedu.cn/" target="_blank">国家中小学智慧教育平台（站内搜"二元一次方程组"）</a></li>
+        </ul></div>
+    </section>
+
+    <!-- 七下第3章 整式的乘除 -->
+    <section class="chap-sec" id="sec-c9">
+      <h2 class="chap">七下第3章 整式的乘除</h2>
+      <div class="frame"><b>知识框架：</b>幂的运算（同底乘除／幂的乘方／积乘方）→ 整式乘法 → 乘法公式（平方差／完全平方）→ 整式除法</div>
+      <div class="teach">
+        <p><b>① 幂的运算三铁律：</b><span class="kou">同底数相乘加指数，幂的乘方乘指数，积的乘方各乘各</span>。aᵐ·aⁿ=aᵐ⁺ⁿ；(aᵐ)ⁿ=aᵐⁿ；(ab)ⁿ=aⁿbⁿ。</p>
+        <p><b>② 乘法公式。</b>平方差：(a+b)(a−b)=a²−b²。完全平方：(a±b)²=a²<b>±2ab</b>+b²。</p>
+        <p><b>③ 除以单项式</b>=系数相除、同底数幂相减、只在被除式里的字母照抄。</p>
+      </div>
+      <div class="solve"><p class="q">典例1：计算 (2x−3)²。</p>
+        <p class="st">解：(2x)²−2·2x·3+3²=4x²−12x+9。<b>答案：4x²−12x+9</b></p>
+        <p class="tip">点睛：漏−12x；(2x)²算成2x²（系数也要平方）。</p></div>
+      <div class="solve"><p class="q">典例2：a+b=5，ab=6，求 a²+b²。</p>
+        <p class="st">解：a²+b²=(a+b)²−2ab=25−12=13。<b>答案：13</b></p>
+        <p class="tip">点睛：记错符号写成+2ab得37就错。</p></div>
+      <div class="type"><p class="t">题型·坑点</p>
+        <p>题型A 公式运算：认清a、b。<b>坑：</b>完全平方漏2ab；(2x)²只平方字母。</p>
+        <p>题型B 公式逆用：变形求解。<b>坑：</b>符号方向反。</p></div>
+      <div class="ext"><span class="t">拓展拔高（补习班专题）</span>
+        <div class="et">专题1 完全平方公式的变形（知二求二）</div>
+        <div class="ex"><b>例：</b>已知 a+b=4，a−b=2，求 ab 与 a²+b²。<br><b>解：</b>(a+b)²−(a−b)²=4ab ⇒ 16−4=4ab ⇒ ab=3；a²+b²=(a+b)²−2ab=16−6=10。<b>答案：ab=3，a²+b²=10。</b><br><b>套路：</b>和、差、积、平方和四量知二可求二，靠两个公式互推。</div>
+        <div class="et">专题2 配方与非负性（a²±2ab+b²≥0）</div>
+        <div class="ex"><b>例：</b>若 x²−6x+y²+8y+25=0，求 x、y。<br><b>解：</b>配方：(x−3)²+(y+4)²=0，平方项都≥0，故 x=3,y=−4。<b>答案：x=3,y=−4。</b><br><b>招：</b>"几个非负项和为0 ⇒ 各自为0"是压轴常客。</div>
+        <div class="et">专题3 幂的运算综合与整体代入</div>
+        <div class="ex"><b>例：</b>已知 2ᵃ=3，2ᵇ=5，求 2ᵃ⁺ᵇ 与 2³ᵃ。<br><b>解：</b>2ᵃ⁺ᵇ=2ᵃ·2ᵇ=15；2³ᵃ=(2ᵃ)³=27。<b>答案：15；27。</b></div>
+      </div>
+      <div class="pit"><b>易错：</b><ul><li>同底数幂相乘指数"相加"记成"相乘"；</li><li>完全平方公式漏2ab；</li><li>混淆(a+b)²与a²+b²；</li><li>系数带平方时忘平方。</li></ul></div>
+      <div class="koubox"><b>口诀：</b><span>同底相乘加指数</span><span>完全平方别丢2ab</span><span>(a+b)²≠a²+b²</span><span>配方非负和为零</span></div>
+      <div class="vid"><b>视频链接（点开即跳转）：</b>
+        <ul>
+          <li><a href="https://www.bilibili.com/video/BV1UY411879H/?p=47" target="_blank">B站系统课·浙教版七下 整式的乘除（合集 P47–P52 整数指数幂/乘法/乘法公式/除法，点开自动连播整章）</a></li>
+          <li><a href="https://basic.smartedu.cn/" target="_blank">国家中小学智慧教育平台（站内搜"整式的乘除"）</a></li>
+        </ul></div>
+    </section>
+
+    <!-- 七下第4章 因式分解 -->
+    <section class="chap-sec" id="sec-c10">
+      <h2 class="chap">七下第4章 因式分解</h2>
+      <div class="frame"><b>知识框架：</b>因式分解意义 → 提取公因式法 → 用乘法公式分解（平方差／完全平方）</div>
+      <div class="teach">
+        <p><b>① 因式分解 = 和差化乘积。</b>与整式乘法互为逆运算。结果必须是<b>整式乘积</b>形式，且分到不能再分。</p>
+        <p><b>② 提取公因式：</b>找各项公共的因式（系数取最大公约数，字母取最低次幂）提出来。</p>
+        <p><b>③ 公式法：</b>平方差 a²−b²=(a+b)(a−b)；完全平方 a²±2ab+b²=(a±b)²。</p>
+      </div>
+      <div class="solve"><p class="q">典例1：分解 3x²y + 6xy²。</p>
+        <p class="st">解：公因式 3xy，= 3xy(x+2y)。<b>答案：3xy(x+2y)</b></p>
+        <p class="tip">点睛：提完后括号里用原项除以公因式。</p></div>
+      <div class="solve"><p class="q">典例2：分解 x²−9。</p>
+        <p class="st">解：= x²−3² = (x+3)(x−3)。<b>答案：(x+3)(x−3)</b></p>
+        <p class="tip">点睛：先认出"平方差"结构。</p></div>
+      <div class="type"><p class="t">题型·坑点</p>
+        <p>题型A 提公因式：先提公因式再谈公式。<b>坑：</b>漏提负号导致括号内符号错；提不彻底。</p>
+        <p>题型B 公式法：认结构。<b>坑：</b>把 x²+4 当平方差（这是和，不能分）；完全平方中间项 2ab 对不上。</p></div>
+      <div class="ext"><span class="t">拓展拔高（补习班专题）</span>
+        <div class="et">专题1 因式分解的应用（求值/整除/简便计算）</div>
+        <div class="ex"><b>例：</b>不用计算器，算 99²−1 能否被 100 整除？<br><b>解：</b>99²−1=(99+1)(99−1)=100×98，含因数100 ⇒ 能整除。<b>答案：能。</b><br><b>招：</b>求值时先分解再代，常大幅化简。</div>
+        <div class="et">专题2 先提公因式再用公式（综合）</div>
+        <div class="ex"><b>例：</b>分解 2x³−8x。<br><b>解：</b>=2x(x²−4)=2x(x+2)(x−2)。<b>答案：2x(x+2)(x−2)。</b><br><b>套路：</b>顺序固定——先提公因式，再看能否用公式，直到彻底。</div>
+        <div class="et">专题3 十字相乘法（补习班加餐，课本常不系统讲）</div>
+        <div class="ex"><b>例：</b>分解 x²+5x+6。<br><b>解：</b>找两数积6、和5 ⇒ 2和3，=(x+2)(x+3)。<b>答案：(x+2)(x+3)。</b><br><b>提醒：</b>这是二次方程/分式化简的重要基础，考试常间接用到，建议提前练熟。</div>
+      </div>
+      <div class="pit"><b>易错：</b><ul><li>结果不是乘积形式（写成和差）；</li><li>提公因式漏负号、不彻底；</li><li>x²+常数的"平方和"硬拆；</li><li>分解不完全（还能再分却停了）。</li></ul></div>
+      <div class="koubox"><b>口诀：</b><span>和差化乘积</span><span>先提公再公式</span><span>平方差两数和乘差</span><span>完全平方看2ab</span></div>
+      <div class="vid"><b>视频链接（点开即跳转）：</b>
+        <ul>
+          <li><a href="https://www.bilibili.com/video/BV1UY411879H/?p=53" target="_blank">B站系统课·浙教版七下 因式分解（合集 P53 提公因式/公式法，点开自动连播）</a></li>
+          <li><a href="https://basic.smartedu.cn/" target="_blank">国家中小学智慧教育平台（站内搜"因式分解"）</a></li>
+        </ul></div>
+    </section>
+
+    <!-- 七下第5章 分式 -->
+    <section class="chap-sec" id="sec-c11">
+      <h2 class="chap">七下第5章 分式</h2>
+      <div class="frame"><b>知识框架：</b>分式意义（分母≠0）→ 基本性质 → 乘除 → 加减 → 分式方程</div>
+      <div class="teach">
+        <p><b>① 分式有意义：分母 ≠ 0。</b>值为0：分子=0 且分母≠0（两者同时满足）。</p>
+        <p><b>② 基本性质：</b>分子分母同乘(或除以)同一个<b>不为0</b>的整式，分式值不变。</p>
+        <p><b>③ 加减：</b>先通分（找最简公分母），再分子相加减，最后约分。</p>
+        <p><b>④ 分式方程：</b>去分母化整式方程 → 解 → <b>必须检验（防增根）</b>。</p>
+      </div>
+      <div class="solve"><p class="q">典例1：x 为何值时 (x−2)/(x+3)=0？</p>
+        <p class="st">解：分子 x−2=0 ⇒ x=2，此时分母 5≠0，成立。<b>答案：x=2</b></p>
+        <p class="tip">点睛：光分子为0不够，还要分母不为0。</p></div>
+      <div class="solve"><p class="q">典例2：解分式方程 1/(x−1) = 2/x。</p>
+        <p class="st">解：两边×x(x−1)：x=2(x−1) ⇒ x=2x−2 ⇒ x=2。检验分母≠0，成立。<b>答案：x=2</b></p>
+        <p class="tip">点睛：解完一定要代回验分母不为0。</p></div>
+      <div class="type"><p class="t">题型·坑点</p>
+        <p>题型A 分式有意义/值为0。<b>坑：</b>值为0忘验分母。</p>
+        <p>题型B 分式方程：去分母、检验。<b>坑：</b>漏乘常数项；忘检验得增根。</p></div>
+      <div class="ext"><span class="t">拓展拔高（补习班专题）</span>
+        <div class="et">专题1 分式化简求值（整体/通分技巧）</div>
+        <div class="ex"><b>例：</b>化简 (x²−1)/(x²+2x+1) ÷ (x−1)/(x+1)。<br><b>解：</b>=[(x−1)(x+1)/(x+1)²] × [(x+1)/(x−1)] = 1。<b>答案：1。</b><br><b>招：</b>先因式分解再约分，比硬算快且不易错。</div>
+        <div class="et">专题2 分式方程增根问题（含参）</div>
+        <div class="ex"><b>例：</b>方程 1/(x−2)=k/(x−2) 无解，求 k。<br><b>解：</b>两边×(x−2)：1=k。若 k=1，则 1=1 恒成立但 x=2 使分母为0（增根），故无解；k≠1 时有解。<b>答案：k=1。</b><br><b>套路：</b>无解=产生增根(使公分母为0)或化简后矛盾，重点看增根对应参数。</div>
+        <div class="et">专题3 实际应用（工程/行程分式模型）</div>
+        <div class="ex"><b>例：</b>甲单独做需 a 天，甲乙合做 b 天完，乙单独需几天？<br><b>解：</b>设乙单独 x 天，1/a+1/x=1/b ⇒ 1/x=1/b−1/a=(a−b)/(ab) ⇒ x=ab/(a−b)。<b>答案：ab/(a−b) 天。</b></div>
+      </div>
+      <div class="pit"><b>易错：</b><ul><li>分式值为0忘验分母；</li><li>通分找错最简公分母；</li><li>分式方程忘检验增根；</li><li>去分母漏乘不含分母项。</li></ul></div>
+      <div class="koubox"><b>口诀：</b><span>分母为零无意义</span><span>值为零分子零且分母非零</span><span>加减先通分</span><span>分式解方程必检验</span></div>
+      <div class="vid"><b>视频链接（点开即跳转）：</b>
+        <ul>
+          <li><a href="https://www.bilibili.com/video/BV1UY411879H/?p=54" target="_blank">B站系统课·浙教版七下 分式（合集 P54–P55 分式/分式乘除，P56+ 分式加减与分式方程，点开自动连播整章）</a></li>
+          <li><a href="https://basic.smartedu.cn/" target="_blank">国家中小学智慧教育平台（站内搜"分式"）</a></li>
+        </ul></div>
+    </section>
+
+    <!-- 七下第6章 数据与统计图表 -->
+    <section class="chap-sec" id="sec-c12">
+      <h2 class="chap">七下第6章 数据与统计图表</h2>
+      <div class="frame"><b>知识框架：</b>数据收集与整理 → 条形/折线/扇形统计图 → 频数与频率 → 频数直方图</div>
+      <div class="teach">
+        <p><b>① 收集方式：</b>全面调查(普查) vs 抽样调查。总体太大或有破坏性用抽样，样本要<b>代表性</b>。频率=频数÷总数。</p>
+        <p><b>② 三种图各管一摊。</b><span class="kou">条形比数量，折线看趋势，扇形看占比</span>。</p>
+        <p><b>③ 扇形圆心角</b>= 360° × 百分比。</p>
+        <p><b>④ 频数直方图：</b>把数据分组，横轴是组距，纵轴是频数。</p>
+      </div>
+      <div class="solve"><p class="q">典例：抽查200人，喜欢篮球50人，求百分比与圆心角。</p>
+        <p class="st">解：50/200=25%；360°×25%=90°。<b>答案：25%，90°</b></p>
+        <p class="tip">点睛：扇形百分比和须为100%；圆心角别忘×360°。</p></div>
+      <div class="type"><p class="t">题型·坑点</p>
+        <p>题型 补全统计图：先算总数再求各部分。<b>坑：</b>扇形百分比和≠100%仍硬算；样本不具代表性却下总体结论。</p></div>
+      <div class="ext"><span class="t">拓展拔高（补习班专题）</span>
+        <div class="et">专题1 图表信息提取与补全（结合实数/代数）</div>
+        <div class="ex"><b>例：</b>扇形图中A占30%、B占45%，其余为C，已知C有50人，求总人数。<br><b>解：</b>C占比=1−30%−45%=25%；总数=50÷25%=200。<b>答案：200人。</b><br><b>招：</b>用"部分÷对应百分比=总数"反推。</div>
+        <div class="et">专题2 频数分布直方图应用</div>
+        <div class="ex"><b>例：</b>80名学生身高分组，某组频数12、频率0.15，对吗？总频数应=？<br><b>解：</b>频率=频数/总数=12/80=0.15，对；所有组频数之和=80。<b>答案：对，总频数80。</b></div>
+        <div class="et">专题3 数据决策（结合情境）</div>
+        <div class="ex"><b>例：</b>两种饮料销量折线，A稳步上升、B波动下降，进货建议？<br><b>解：</b>增A减B（看趋势）。<b>招：</b>统计图结论要基于"趋势/占比"而非单个点。</div>
+      </div>
+      <div class="pit"><b>易错：</b><ul><li>把抽样结论当精确总体值；</li><li>扇形圆心角忘×360°；</li><li>频数（个数）与频率（比例）混；</li><li>直方图组距/频数看错轴。</li></ul></div>
+      <div class="koubox"><b>口诀：</b><span>条形比数折线看势</span><span>扇形看占比</span><span>圆心=360×百分比</span><span>频率=频数÷总数</span></div>
+      <div class="vid"><b>视频链接（点开即跳转）：</b>
+        <ul>
+          <li><a href="https://www.bilibili.com/video/BV1UY411879H/?p=56" target="_blank">B站系统课·浙教版七下 数据与统计图表（合集 P56+ 数据收集/条形折线扇形图/频数与频率/频数直方图，点开自动连播整章）</a></li>
+          <li><a href="https://basic.smartedu.cn/" target="_blank">国家中小学智慧教育平台（站内搜"统计图表"）</a></li>
+        </ul></div>
+    </section>
+
+    <!-- 附录一 -->
+    <section class="chap-sec" id="sec-err">
+      <h2 class="chap">附一：错题归因模板（可打印）</h2>
+      <p>每道错题按四栏记录，<b>重做三遍</b>算过关。这步 AI 替不了，必须孩子自己写。</p>
+      <table>
+        <tr><th style="width:12%">日期</th><th style="width:28%">题目（简记）</th><th style="width:18%">错误类型</th><th style="width:42%">正确思路 + 我的提醒</th></tr>
+        <tr><td></td><td></td><td>□知识性 □习惯性 □策略性</td><td></td></tr>
+        <tr><td></td><td></td><td>□知识性 □习惯性 □策略性</td><td></td></tr>
+        <tr><td></td><td></td><td>□知识性 □习惯性 □策略性</td><td></td></tr>
+        <tr><td></td><td></td><td>□知识性 □习惯性 □策略性</td><td></td></tr>
+      </table>
+      <div class="note"><b>老师提醒：</b>"习惯性错误"（去括号忘变号、移项不变号、绝对值不判符号）占七年级失分大头，最易被忽视。这类错要专门练"慢动作"——每一步口头说出依据。拓展拔高题做错，多归为"策略性"（没看出模型/没分类），要补的是套路库。</div>
+    </section>
+
+    <!-- 附录二 -->
+    <section class="chap-sec" id="sec-road">
+      <h2 class="chap">附二：能力进阶路线图</h2>
+      <div class="frame"><b>三关依次过，不盲目赶进度。哪关卡住，退回那一关补。基础关不过，别急着啃拓展。</b></div>
+      <table>
+        <tr><th>关卡</th><th>过关标准</th><th>对应重点</th></tr>
+        <tr><td><b>计算关</b></td><td>有理数混合运算、整式加减乘除、实数化简，连续10题全对</td><td>第1、2、3、4、9章</td></tr>
+        <tr><td><b>应用关</b></td><td>独立找等量关系列出并解一元/二元一次方程组应用</td><td>第5、8章</td></tr>
+        <tr><td><b>推理关</b></td><td>写清"因为…所以…"，完成平行线拐弯证明、因式分解与分式化简</td><td>第7、10、11章</td></tr>
+        <tr><td><b>拓展关</b></td><td>能做含参、分类讨论、几何模型、新定义等压轴小题</td><td>各章紫色「拓展拔高」</td></tr>
+      </table>
+      <div class="note"><b>给家长：</b>七年级最怕"前面计算没过关，后面证明直接崩"。请先盯"计算关"稳，再放"推理关"，最后用"拓展关"拔高。每章<b>口诀</b>建议背熟，是"听懂"变"做对"的桥；<b>拓展拔高</b>像补习班加餐，基础牢固后再吃，效果最好。</div>
+    </section>
+
+    <div class="footer">浙教版七年级数学 · 同步精讲 + 拓展拔高（单章视图）｜ 12章+2附录 ｜ 点左侧章节切换 ｜ 紫色模块为补习班式拓展 ｜ 错题归因需学生本人完成</div>
+  </main>
+</div>
+
+<script>
+  function show(id){
+    document.querySelectorAll('.chap-sec').forEach(function(s){s.classList.remove('active');});
+    document.getElementById('sec-'+id).classList.add('active');
+    document.querySelectorAll('.navbtn').forEach(function(b){b.classList.remove('on');});
+    document.getElementById('nav-'+id).classList.add('on');
+    if(document.querySelector('.content').scrollTo) document.querySelector('.content').scrollTo(0,0);
+    window.scrollTo(0,0);
+  }
+
+  /* ===== 交互动图 ===== */
+  var curA=-3;
+  function absMove(a){
+    curA=Math.max(-5,Math.min(5,a));
+    var px=200+curA*32;
+    var s=`<svg viewBox='0 0 400 150'>`;
+    s+=`<line x1='20' y1='80' x2='380' y2='80' stroke='#444' stroke-width='2'/>`;
+    for(var i=-5;i<=5;i++){var x=200+i*32;
+      s+=`<line x1='${x}' y1='74' x2='${x}' y2='86' stroke='#888'/>`;
+      s+=`<text x='${x}' y='104' font-size='11' text-anchor='middle' fill='#666'>${i}</text>`;}
+    s+=`<line x1='200' y1='80' x2='${px}' y2='80' stroke='#3B6D11' stroke-width='5' opacity='0.5'/>`;
+    s+=`<circle cx='${px}' cy='80' r='7' fill='#A32D2D'/>`;
+    s+=`<text x='${px}' y='66' font-size='13' text-anchor='middle' fill='#A32D2D' font-weight='bold'>A</text></svg>`;
+    document.getElementById('abs-stage').innerHTML=s;
+    var txt=curA<0?`a=${curA}，是负数，但到原点距离 |a|=${ -curA }（距离永远非负）`
+             :curA>0?`a=${curA}，是正数，|a|=${curA}`
+             :'a=0，|a|=0';
+    document.getElementById('abs-res').innerHTML=`<b>当前：</b>${txt}`;
+  }
+
+  var powBase=2;
+  function powShow(){
+    var b=powBase;
+    var s=`<svg viewBox='0 0 420 170'>`;
+    s+=`<text x='20' y='50' font-size='19' fill='#0c447c'>(−${b})² = (−${b})×(−${b}) = ${b*b}</text>`;
+    s+=`<text x='20' y='100' font-size='19' fill='#A32D2D'>−${b}² = −(${b}×${b}) = −${b*b}</text>`;
+    s+=`<text x='20' y='145' font-size='13' fill='#6b7280'>负号进括号才平方；括号外只取相反数。奇数幂两者同号可同值。</text>`;
+    s+=`</svg>`;
+    document.getElementById('pow-stage').innerHTML=s;
+    document.getElementById('pow-res').innerHTML=`<b>结论：</b>(−${b})²=${b*b}，−${b}²=−${b*b}，只差一个负号，结果天差地别。`;
+  }
+  function powSwap(){powBase = powBase===2?3:2; powShow();}
+
+  var ubStep=0, ubMode='neg';
+  function ubSet(m){ubMode=m;ubStep=0;ubRender();}
+  function ubNext(){ubStep=(ubStep+1)%3;ubRender();}
+  function ubRender(){
+    var box=document.getElementById('ub-expr'), res=document.getElementById('ub-res');
+    if(ubMode==='neg'){
+      if(ubStep===0){box.innerHTML='3x − ( 2x − 4y )';res.innerHTML='点“去括号”看符号怎么变。';}
+      else if(ubStep===1){box.innerHTML='3x − [ 2x − 4y ]';res.innerHTML='门前是 <b>−</b>，先拆门脸（括号变虚线）。';}
+      else {box.innerHTML=`3x <span class='chg1'>− 2x</span> <span class='chg2'>+ 4y</span>`;res.innerHTML='门内每项<b>全变号</b>：2x→−2x（红），−4y→+4y（绿，负负得正）。结果 <b>3x−2x+4y</b>。';}
+    } else {
+      if(ubStep===0){box.innerHTML='5a + ( 3a − b )';res.innerHTML='点“去括号”看符号怎么变。';}
+      else if(ubStep===1){box.innerHTML='5a + [ 3a − b ]';res.innerHTML='门前是 <b>+</b>，先拆门脸。';}
+      else {box.innerHTML=`5a <span class='chg1'>+ 3a</span> − b`;res.innerHTML='门内各项<b>不变号</b>：+3a 仍 +3a，−b 仍 −b。结果 <b>5a+3a−b</b>。';}
+    }
+  }
+
+  function bendShow(on){
+    var s=`<svg viewBox='0 0 400 220'>`;
+    s+=`<line x1='30' y1='70' x2='370' y2='70' stroke='#185FA5' stroke-width='2'/>`;
+    s+=`<line x1='30' y1='170' x2='370' y2='170' stroke='#185FA5' stroke-width='2'/>`;
+    s+=`<text x='320' y='62' font-size='12' fill='#185FA5'>AB ∥ CD</text>`;
+    var Bx=150,By=70,Ex=210,Ey=100,Dx=270,Dy=170;
+    s+=`<polyline points='${Bx},${By} ${Ex},${Ey} ${Dx},${Dy}' fill='none' stroke='#A32D2D' stroke-width='3'/>`;
+    s+=`<circle cx='${Bx}' cy='${By}' r='4' fill='#A32D2D'/><circle cx='${Ex}' cy='${Ey}' r='4' fill='#A32D2D'/><circle cx='${Dx}' cy='${Dy}' r='4' fill='#A32D2D'/>`;
+    s+=`<text x='116' y='60' font-size='13' fill='#A32D2D'>40°</text>`;
+    s+=`<text x='300' y='162' font-size='13' fill='#A32D2D'>30°</text>`;
+    if(on){
+      s+=`<line x1='60' y1='100' x2='350' y2='100' stroke='#3B6D11' stroke-width='2' stroke-dasharray='6,4'/>`;
+      s+=`<text x='300' y='94' font-size='11' fill='#3B6D11'>EF ∥ AB</text>`;
+      s+=`<text x='166' y='92' font-size='13' fill='#3B6D11'>40°</text>`;
+      s+=`<text x='232' y='122' font-size='13' fill='#3B6D11'>30°</text>`;
+    }
+    s+=`</svg>`;
+    document.getElementById('bend-stage').innerHTML=s;
+    document.getElementById('bend-res').innerHTML = on
+      ? '过 E 作 EF∥AB，则 EF∥CD。∠BEF=∠B=40°（内错角），∠FED=∠D=30°（内错角），所以 <b>∠BED=40°+30°=70°</b>（猪蹄模型：拐弯处两角相加）。'
+      : '已知 AB∥CD，∠B=40°，∠D=30°，求 ∠BED。点“显示辅助线”看怎么把角搬过来。';
+  }
+
+  absMove(-3); powShow(); ubRender(); bendShow(false);
+</script>
+</body>
+</html>
